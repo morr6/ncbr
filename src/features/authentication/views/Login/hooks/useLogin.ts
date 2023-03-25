@@ -17,7 +17,7 @@ const isUserDataCorrect = ({ login, password }: InitialValues) => {
   const isLoginValid = login === USER_MOCK_DATA.username || login === USER_MOCK_DATA.email;
   const isPasswordValid = password === USER_MOCK_DATA.password;
 
-  return { isDataValid: isLoginValid && isPasswordValid, user: USER_MOCK_DATA };
+  return { isDataCorrect: isLoginValid && isPasswordValid, user: USER_MOCK_DATA };
 };
 
 export const useLogin = () => {
@@ -30,9 +30,9 @@ export const useLogin = () => {
       actions.setSubmitting(true);
       // const response = await axios.post('URL', values)
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const { isDataValid, user } = isUserDataCorrect(values);
+      const { isDataCorrect, user } = isUserDataCorrect(values);
 
-      if (isDataValid) {
+      if (isDataCorrect) {
         localStorage.setItem('loggedUser', JSON.stringify(user));
         navigate('/');
       } else {

@@ -11,7 +11,7 @@ const GlobalStyles: GlobalStyleComponent<GlobalStyleProps, DefaultTheme> = creat
     font-size: 100%;
 
     body {
-      width: 100vw;
+      width: 100%;
       min-height: 100vh;
       padding: 0;
       margin: 0;
