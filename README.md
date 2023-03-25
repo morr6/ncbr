@@ -6,11 +6,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm install --legacy-peer-deps`
-
-Download all needed packageg.\
-Because of material UI you need to use --legacy-peer-deps flag
-
 ### `npm start`
 
 Runs the app in the development mode.\
