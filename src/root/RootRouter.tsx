@@ -1,5 +1,7 @@
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import LoginPage from 'features/authentication/views/Login/Login';
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -7,7 +9,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <div>Login</div>,
+    element: <LoginPage />,
   },
   { path: '*', element: <Navigate to="/" /> },
 ]);

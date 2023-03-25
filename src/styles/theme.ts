@@ -1,9 +1,8 @@
-import { DefaultTheme } from 'styled-components';
 import { rem } from 'polished';
 
-import { colors } from './constants';
+import { colors, gutters } from './constants';
 
-export const theme: DefaultTheme = {
+export const theme = {
   colors: {
     grays: colors.grays,
     azure: colors.azure,
@@ -22,7 +21,7 @@ export const theme: DefaultTheme = {
       focus: colors.grays[4],
     },
   },
-  fotSizes: {
+  fontSizes: {
     big: rem(40),
     medium: rem(22),
     default: rem(16),
@@ -34,4 +33,5 @@ export const theme: DefaultTheme = {
     medium: '500',
     bold: '600',
   },
+  gutters,
 };
