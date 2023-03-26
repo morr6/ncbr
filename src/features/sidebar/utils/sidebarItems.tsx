@@ -11,7 +11,7 @@ const sidebarItems: SidebarItemType[] = [
   },
   {
     name: 'Add new user',
-    path: '/user',
+    path: '/user/0',
     icon: <PersonAddAltIcon />,
   },
 ];
