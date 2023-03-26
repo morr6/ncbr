@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from 'features/authentication/views/Login';
 import PrivateRoute from './PrivateRoute';
 import useAuth from 'features/authentication/hooks/useAuth';
+import UserTable from 'features/users';
 
 const RootRouter = () => {
   const isUserLogged = useAuth();
@@ -11,7 +12,7 @@ const RootRouter = () => {
     <Router>
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route path="/" element={<>Home</>} />
+          <Route path="/" element={<UserTable />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
 
