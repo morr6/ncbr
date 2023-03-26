@@ -1,10 +1,11 @@
-import { Cell, Column } from 'react-table';
+import { Cell, CellProps, Column } from 'react-table';
+import dayjs from 'dayjs';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import dayjs from 'dayjs';
 
 import { colors } from 'styles/constants';
 import { User } from 'store/users/reducers';
+import ActionsCell from '../components/ActionsCell';
 
 export const columns: Column<User>[] = [
   {
@@ -33,9 +34,13 @@ export const columns: Column<User>[] = [
   {
     Header: 'Active',
     accessor: 'isActive',
-    // @ts-ignore
-    Cell: (cell: Cell<User>) =>
+    Cell: (cell: CellProps<User>) =>
       cell.value ? <CheckIcon sx={{ color: colors.azure }} /> : <CloseIcon />,
+  },
+  {
+    Header: 'Actions',
+    id: 'actions',
+    Cell: (props: CellProps<User>) => <ActionsCell {...props} />,
   },
 ];
 

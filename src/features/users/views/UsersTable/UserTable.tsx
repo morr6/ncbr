@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTable } from 'react-table';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchUsers } from 'store/users/slice';
 
 import { useAppDispatch } from 'hooks';
