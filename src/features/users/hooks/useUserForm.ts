@@ -1,10 +1,14 @@
+import { RootState } from 'store/rootReducer';
 import { useFormik } from 'formik';
 import { useAppDispatch } from 'hooks';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { addUser } from 'store/users/slice';
+import { getUser } from 'store/users/selectors';
+import { addUser, editUser } from 'store/users/slice';
 
 import validationSchema from '../utils/validation';
+import { User } from 'store/users/reducers';
 
 export type AddUserFormValues = {
   name: string;
@@ -15,17 +19,25 @@ export type AddUserFormValues = {
   isActive: boolean;
 };
 
-export const useAddUserForm = () => {
+export const useUserForm = (userId: number) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleFormSubmit = async (values: AddUserFormValues, actions: any) => {
+  const user = useSelector((state: RootState) => getUser(state, userId));
+
+  const onSubmit = async (values: User, actions: any) => {
     try {
       actions.setSubmitting(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      // generate random id only for testing purpose
-      dispatch(addUser({ id: Math.floor(Math.random() * 99999), ...values }));
-      toast.success('User added successfully');
+
+      if (user) {
+        dispatch(editUser(values));
+        toast.success('User successfully edited');
+      } else {
+        dispatch(addUser(values));
+        toast.success('User added successfully');
+      }
+
       navigate('/');
     } catch (error) {
       toast.error('Something went wrong, try again later');
@@ -35,7 +47,8 @@ export const useAddUserForm = () => {
   };
 
   const formik = useFormik({
-    initialValues: {
+    initialValues: user ?? {
+      id: 0,
       name: '',
       surname: '',
       dateOfBirth: new Date(),
@@ -44,7 +57,7 @@ export const useAddUserForm = () => {
       isActive: false,
     },
     validationSchema,
-    onSubmit: handleFormSubmit,
+    onSubmit: onSubmit,
   });
 
   const nameError = formik.touched.name && formik.errors.name;
@@ -55,4 +68,4 @@ export const useAddUserForm = () => {
   return { ...formik, nameError, surnameError, cityError, streetError };
 };
 
-export default useAddUserForm;
+export default useUserForm;

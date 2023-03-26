@@ -4,7 +4,7 @@ import Login from 'features/authentication/views/Login';
 import PrivateRoute from './PrivateRoute';
 import { useAuth } from 'hooks';
 import UserTable from 'features/users';
-import AddUserForm from 'features/users/views/AddUserForm';
+import UserForm from 'features/users/views/UserForm';
 
 const RootRouter = () => {
   const isUserLogged = useAuth();
@@ -14,7 +14,8 @@ const RootRouter = () => {
       <Routes>
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<UserTable />} />
-          <Route path="add-user" element={<AddUserForm />} />
+          <Route path="/user/:userId" element={<UserForm />} />
+          <Route path="/add-user" element={<UserForm />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
 

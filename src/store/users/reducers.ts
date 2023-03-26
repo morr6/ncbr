@@ -38,7 +38,15 @@ export const addUserReducer: CaseReducer<UsersState, PayloadAction<User>> = (
   state,
   { payload: userData }
 ) => {
-  state.users = [...state.users, userData];
+  // generating user id for testing purpose
+  state.users = [...state.users, { ...userData, id: Math.floor(Math.random() * 99999) }];
+};
+
+export const editUserReducer: CaseReducer<UsersState, PayloadAction<User>> = (
+  state,
+  { payload: newUserData }
+) => {
+  state.users = state.users.map((user) => (user.id === newUserData.id ? newUserData : user));
 };
 
 export const deleteUserReducer: CaseReducer<UsersState, PayloadAction<number>> = (
