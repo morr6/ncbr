@@ -15,7 +15,6 @@ const RootRouter = () => {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<UserTable />} />
           <Route path="/user/:userId" element={<UserForm />} />
-          <Route path="/add-user" element={<UserForm />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
 

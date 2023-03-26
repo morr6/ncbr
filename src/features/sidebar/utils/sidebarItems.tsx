@@ -1,0 +1,19 @@
+import HomeIcon from '@mui/icons-material/Home';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+
+import { SidebarItemType } from '../types';
+
+const sidebarItems: SidebarItemType[] = [
+  {
+    name: 'Users table',
+    path: '/',
+    icon: <HomeIcon />,
+  },
+  {
+    name: 'Add new user',
+    path: '/user',
+    icon: <PersonAddAltIcon />,
+  },
+];
+
+export default sidebarItems;
