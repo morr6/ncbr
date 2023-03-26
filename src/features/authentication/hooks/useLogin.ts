@@ -17,7 +17,7 @@ const isUserDataCorrect = ({ login, password }: InitialValues) => {
   const isLoginValid = login === USER_MOCK_DATA.username || login === USER_MOCK_DATA.email;
   const isPasswordValid = password === USER_MOCK_DATA.password;
 
-  return { isDataCorrect: isLoginValid && isPasswordValid, user: USER_MOCK_DATA };
+  return { isDataCorrect: isLoginValid && isPasswordValid, token: USER_MOCK_DATA.token };
 };
 
 export const useLogin = () => {
@@ -30,10 +30,10 @@ export const useLogin = () => {
       actions.setSubmitting(true);
       // const response = await axios.post('URL', values)
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const { isDataCorrect, user } = isUserDataCorrect(values);
+      const { isDataCorrect, token } = isUserDataCorrect(values);
 
       if (isDataCorrect) {
-        localStorage.setItem('loggedUser', JSON.stringify(user));
+        localStorage.setItem('token', JSON.stringify(token));
         navigate('/');
       } else {
         toast.error('Incorect email/username or password');

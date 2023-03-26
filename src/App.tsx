@@ -15,6 +15,7 @@ const TEST_USER = [
     email: 'test@test.pl',
     username: 'test',
     password: 'testtest',
+    token: 'hXk6GbpX?RFNiBpUBzCsAGZ9GV',
   },
 ];
 
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <ToastContainer position="bottom-center" />
+        <ToastContainer position="bottom-center" autoClose={3000} />
         <GlobalStyles />
         <RootRouter />
       </ThemeProvider>
