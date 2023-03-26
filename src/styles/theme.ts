@@ -33,5 +33,8 @@ export const theme = {
     medium: '500',
     bold: '600',
   },
+  border: {
+    color: colors.grays[3],
+  },
   gutters,
 };

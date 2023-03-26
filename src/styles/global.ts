@@ -18,8 +18,12 @@ const GlobalStyles: GlobalStyleComponent<GlobalStyleProps, DefaultTheme> = creat
       font-family: 'Roboto', sans-serif;
       color: ${({ theme }) => theme.colors.text.default};
 
-      .MuiButtonBase-root  {
+      .MuiButton-root {
         background: ${({ theme }) => theme.colors.azure};
+      }
+
+      .MuiCheckbox-root {
+        color: ${({ theme }) => theme.colors.azure}!important;
       }
     }
   }
