@@ -99,7 +99,7 @@ export const AddUserForm = () => {
             type="submit"
             variant="contained"
           >
-            {userId ? 'Edit user' : 'Add user'}
+            {Number(userId) ? 'Edit user' : 'Add user'}
           </LoadingButton>
         </ButtonsWrapper>
       </Form>
