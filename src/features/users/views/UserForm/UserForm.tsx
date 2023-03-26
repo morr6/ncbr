@@ -1,12 +1,15 @@
 import { LoadingButton } from '@mui/lab';
 import Checkbox from '@mui/material/Checkbox';
+import { useParams } from 'react-router-dom';
 
 import { TextField, Select, DatePicker } from 'components';
-import { Form, Label, RowWrapper } from './AddUserForm.styled';
-import useAddUserForm from 'features/users/hooks/useAddUserForm';
+import { Form, Label, RowWrapper } from './UserForm.styled';
+import useUserForm from 'features/users/hooks/useUserForm';
 import options from 'features/users/utils/formSelectOptions';
 
 export const AddUserForm = () => {
+  const { userId } = useParams();
+
   const {
     values,
     isSubmitting,
@@ -19,7 +22,7 @@ export const AddUserForm = () => {
     handleChange,
     handleBlur,
     setFieldValue,
-  } = useAddUserForm();
+  } = useUserForm(Number(userId));
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -56,6 +59,7 @@ export const AddUserForm = () => {
         <Select
           label="City"
           options={options}
+          value={values.city}
           onChange={(value) => setFieldValue('city', value)}
           errorMessage={cityError}
         />
@@ -76,7 +80,7 @@ export const AddUserForm = () => {
         type="submit"
         variant="contained"
       >
-        Add user
+        {userId ? 'Edit user' : 'Add user'}
       </LoadingButton>
     </Form>
   );

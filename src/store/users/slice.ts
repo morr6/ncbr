@@ -6,6 +6,7 @@ import {
   setUsersDataReducer,
   setIsUserLoadingReducer,
   addUserReducer,
+  editUserReducer,
   deleteUserReducer,
 } from './reducers';
 import { MOCK_DATA } from 'features/users/utils/table';
@@ -17,6 +18,7 @@ const slice = createSlice({
     setUsersData: setUsersDataReducer,
     setIsUserLoading: setIsUserLoadingReducer,
     addUser: addUserReducer,
+    editUser: editUserReducer,
     deleteUser: deleteUserReducer,
   },
   extraReducers: (builder) => {
@@ -34,7 +36,7 @@ const slice = createSlice({
   },
 });
 
-export const { addUser, deleteUser, setUsersData, setIsUserLoading } = slice.actions;
+export const { addUser, editUser, deleteUser, setUsersData, setIsUserLoading } = slice.actions;
 
 export default slice.reducer;
 

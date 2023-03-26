@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,6 +8,7 @@ import SelectComponent, { SelectChangeEvent } from '@mui/material/Select';
 type Value = string | number | readonly string[] | undefined;
 
 type SelectProps = {
+  value: string;
   options: {
     value: Value;
     text: string;
@@ -18,13 +18,9 @@ type SelectProps = {
   onChange: (value: Value) => void;
 };
 
-const Select = ({ options, label, errorMessage, onChange }: SelectProps) => {
-  const [value, setValue] = useState('');
-
+const Select = ({ value, options, label, errorMessage, onChange }: SelectProps) => {
   const handleChange = (event: SelectChangeEvent) => {
-    const { value } = event.target;
-    setValue(value);
-    onChange(value);
+    onChange(event.target.value);
   };
 
   return (
