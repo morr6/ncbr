@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import LoadingButton from '@mui/lab/LoadingButton';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
@@ -6,9 +7,12 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { Wrapper, StyledTextField, StyledInputButton } from './Login.styled';
-import useLogin from './hooks/useLogin';
+import useLogin from 'features/authentication/hooks/useLogin';
+import useAuth from 'features/authentication/hooks/useAuth';
 
 export const Login = () => {
+  const isUserLogged = useAuth();
+
   const {
     values,
     errors,
@@ -21,6 +25,10 @@ export const Login = () => {
     handleChange,
     handleSubmit,
   } = useLogin();
+
+  if (isUserLogged) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
