@@ -51,5 +51,5 @@ export const Td = styled.td`
 `;
 
 export const AddUserButton = styled(MuiButton)`
-  margin: ${({ theme }) => theme.gutters[16]} 0 !important;
+  margin: ${({ theme }) => theme.gutters[32]} 0 !important;
 `;

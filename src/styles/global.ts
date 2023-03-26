@@ -18,7 +18,11 @@ const GlobalStyles: GlobalStyleComponent<GlobalStyleProps, DefaultTheme> = creat
       font-family: 'Roboto', sans-serif;
       color: ${({ theme }) => theme.colors.text.default};
 
-      .MuiButton-root {
+      .MuiButton-outlined  {
+        color: ${({ theme }) => theme.colors.azure}!important;
+      }
+
+      .MuiButton-contained {
         background: ${({ theme }) => theme.colors.azure};
       }
 

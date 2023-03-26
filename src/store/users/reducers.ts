@@ -40,3 +40,10 @@ export const addUserReducer: CaseReducer<UsersState, PayloadAction<User>> = (
 ) => {
   state.users = [...state.users, userData];
 };
+
+export const deleteUserReducer: CaseReducer<UsersState, PayloadAction<number>> = (
+  state,
+  { payload: userId }
+) => {
+  state.users = state.users.filter((user) => user.id !== userId);
+};
