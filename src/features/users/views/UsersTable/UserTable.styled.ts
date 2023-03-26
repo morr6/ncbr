@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import MuiButton from '@mui/material/Button';
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
 `;
 
 export const Table = styled.table`
@@ -47,4 +48,8 @@ export const Td = styled.td`
   &:last-child {
     border-right: none;
   }
+`;
+
+export const AddUserButton = styled(MuiButton)`
+  margin: ${({ theme }) => theme.gutters[16]} 0 !important;
 `;

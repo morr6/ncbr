@@ -16,6 +16,7 @@
     "@types/node": "^16.18.20",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
+    "dayjs": "^1.11.7",
     "formik": "^2.2.9",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -59,6 +60,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-datepicker": "^4.10.0",
     "@types/react-table": "^7.7.14",
     "@types/styled-components": "^5.1.26"
   }

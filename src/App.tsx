@@ -9,6 +9,7 @@ import GlobalStyles from 'styles/global';
 import { theme } from 'styles/theme';
 
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const TEST_USER = [
   {

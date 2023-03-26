@@ -1,16 +1,18 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTable } from 'react-table';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchUsers } from 'store/users/slice';
 
-import useAppDispatch from 'hooks/useAppDispatch/useAppDispatch';
-import { columns } from '../../utils/table';
-import { Wrapper, Table, Tr, Th, Td } from './UserTable.styled';
+import { useAppDispatch } from 'hooks';
 import { getUsers } from 'store/users/selectors';
-import AppLoader from 'components/AppLoader';
+import { AppLoader } from 'components';
+import { columns } from 'features/users/utils/table';
+import { Wrapper, Table, Tr, Th, Td, AddUserButton } from './UserTable.styled';
 
 export const UserTable = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const users = useSelector(getUsers);
 
@@ -22,8 +24,14 @@ export const UserTable = () => {
     data: tableData,
   });
 
+  const handleAddNewUserClick = () => {
+    navigate('/add-user');
+  };
+
   useEffect(() => {
-    dispatch(fetchUsers());
+    if (!users.length) {
+      dispatch(fetchUsers());
+    }
   }, [dispatch]);
 
   if (!users.length) {
@@ -32,6 +40,10 @@ export const UserTable = () => {
 
   return (
     <Wrapper>
+      <AddUserButton variant="contained" onClick={handleAddNewUserClick}>
+        Add new user
+      </AddUserButton>
+
       <Table {...getTableProps()} cellSpacing="0">
         <thead>
           {headerGroups.map((headerGroup) => (

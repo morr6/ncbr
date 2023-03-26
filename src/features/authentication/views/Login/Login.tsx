@@ -6,9 +6,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { Wrapper, StyledTextField, StyledInputButton } from './Login.styled';
+import { Wrapper, StyledInputButton } from './Login.styled';
+import { useAuth } from 'hooks';
 import useLogin from 'features/authentication/hooks/useLogin';
-import useAuth from 'features/authentication/hooks/useAuth';
+import { TextField } from 'components';
 
 export const Login = () => {
   const isUserLogged = useAuth();
@@ -33,26 +34,17 @@ export const Login = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Wrapper>
-        <StyledTextField
+        <TextField
           name="login"
-          type="text"
           placeholder="Email or username"
-          variant="standard"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.login}
-          error={!!loginError}
-          helperText={loginError}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <PersonIcon />
-              </InputAdornment>
-            ),
-          }}
+          errorMessage={loginError}
+          icon={<PersonIcon />}
         />
 
-        <StyledTextField
+        <TextField
           name="password"
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
@@ -60,22 +52,15 @@ export const Login = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
-          error={!!passwordError}
-          helperText={passwordError}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <LockIcon />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <StyledInputButton onClick={() => setShowPassword((prev) => !prev)}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </StyledInputButton>
-              </InputAdornment>
-            ),
-          }}
+          errorMessage={passwordError}
+          icon={<LockIcon />}
+          endAdornment={
+            <InputAdornment position="end">
+              <StyledInputButton onClick={() => setShowPassword((prev) => !prev)}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </StyledInputButton>
+            </InputAdornment>
+          }
         />
 
         <LoadingButton

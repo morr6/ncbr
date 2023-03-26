@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import { initialState, setUsersDataReducer, setIsUserLoadingReducer } from './reducers';
+import {
+  initialState,
+  setUsersDataReducer,
+  setIsUserLoadingReducer,
+  addUserReducer,
+} from './reducers';
 import { MOCK_DATA } from 'features/users/utils/table';
 
 const slice = createSlice({
@@ -10,6 +15,7 @@ const slice = createSlice({
   reducers: {
     setUsersData: setUsersDataReducer,
     setIsUserLoading: setIsUserLoadingReducer,
+    addUser: addUserReducer,
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state) => {
@@ -26,7 +32,7 @@ const slice = createSlice({
   },
 });
 
-export const { setUsersData, setIsUserLoading } = slice.actions;
+export const { addUser, setUsersData, setIsUserLoading } = slice.actions;
 
 export default slice.reducer;
 

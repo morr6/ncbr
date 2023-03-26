@@ -4,10 +4,10 @@ export type User = {
   id: number;
   name: string;
   surname: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   city: string;
   street: string;
-  isAdult: boolean;
+  isActive: boolean;
 };
 
 export type UsersState = {
@@ -20,6 +20,13 @@ export const initialState: UsersState = {
   isLoading: false,
 };
 
+export const setIsUserLoadingReducer: CaseReducer<UsersState, PayloadAction<boolean>> = (
+  state,
+  { payload: isLoading }
+) => {
+  state.isLoading = isLoading;
+};
+
 export const setUsersDataReducer: CaseReducer<UsersState, PayloadAction<User[]>> = (
   state,
   { payload: usersData }
@@ -27,9 +34,9 @@ export const setUsersDataReducer: CaseReducer<UsersState, PayloadAction<User[]>>
   state.users = usersData;
 };
 
-export const setIsUserLoadingReducer: CaseReducer<UsersState, PayloadAction<boolean>> = (
+export const addUserReducer: CaseReducer<UsersState, PayloadAction<User>> = (
   state,
-  { payload: isLoading }
+  { payload: userData }
 ) => {
-  state.isLoading = isLoading;
+  state.users = [...state.users, userData];
 };
