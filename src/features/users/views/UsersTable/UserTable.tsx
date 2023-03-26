@@ -8,7 +8,8 @@ import { useAppDispatch } from 'hooks';
 import { getUsers } from 'store/users/selectors';
 import { AppLoader } from 'components';
 import { columns } from 'features/users/utils/table';
-import { Wrapper, Table, Tr, Th, Td, AddUserButton } from './UserTable.styled';
+import { Wrapper, Table, Tr, Th, Td, AddUserButton, Title } from './UserTable.styled';
+import AppLayout from 'components/AppLayout/AppLayout';
 
 export const UserTable = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ export const UserTable = () => {
   });
 
   const handleAddNewUserClick = () => {
-    navigate('/add-user');
+    navigate('/user/0');
   };
 
   useEffect(() => {
@@ -39,36 +40,40 @@ export const UserTable = () => {
   }
 
   return (
-    <Wrapper>
-      <AddUserButton variant="contained" onClick={handleAddNewUserClick}>
-        Add new user
-      </AddUserButton>
+    <AppLayout>
+      <Wrapper>
+        <Title>Users</Title>
 
-      <Table {...getTableProps()} cellSpacing="0">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <Th key={column.id}>{column.render('Header')}</Th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-
-            return (
-              <Tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <Td {...cell.getCellProps()}>{cell.render('Cell')}</Td>
+        <Table {...getTableProps()} cellSpacing="0">
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <Th key={column.id}>{column.render('Header')}</Th>
                 ))}
-              </Tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </Wrapper>
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+
+              return (
+                <Tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <Td {...cell.getCellProps()}>{cell.render('Cell')}</Td>
+                  ))}
+                </Tr>
+              );
+            })}
+          </tbody>
+        </Table>
+
+        <AddUserButton variant="contained" onClick={handleAddNewUserClick}>
+          Add new user
+        </AddUserButton>
+      </Wrapper>
+    </AppLayout>
   );
 };
 

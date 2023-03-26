@@ -7,7 +7,10 @@ type GlobalStyleProps = {
 
 const GlobalStyles: GlobalStyleComponent<GlobalStyleProps, DefaultTheme> = createGlobalStyle`
   html {
-    box-sizing: border-box;
+    * { 
+      box-sizing: border-box; 
+    }
+
     font-size: 100%;
 
     body {

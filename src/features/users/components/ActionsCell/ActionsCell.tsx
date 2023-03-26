@@ -29,6 +29,7 @@ export const ActionsCell = ({ row: { original: user } }: ActionsCellProps) => {
 
   const handleDeleteUser = () => {
     dispatch(deleteUser(user.id));
+    closeModal();
   };
 
   return (
