@@ -1,6 +1,8 @@
 import { Cell, Column } from 'react-table';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
+import dayjs from 'dayjs';
+
 import { colors } from 'styles/constants';
 import { User } from 'store/users/reducers';
 
@@ -16,6 +18,8 @@ export const columns: Column<User>[] = [
   {
     Header: 'Date of birth',
     accessor: 'dateOfBirth',
+    // @ts-ignore
+    Cell: (cell: Cell<User>) => dayjs(cell.value).format('DD-MM-YYYY'),
   },
 
   {
@@ -27,8 +31,8 @@ export const columns: Column<User>[] = [
     accessor: 'street',
   },
   {
-    Header: 'Adult',
-    accessor: 'isAdult',
+    Header: 'Active',
+    accessor: 'isActive',
     // @ts-ignore
     Cell: (cell: Cell<User>) =>
       cell.value ? <CheckIcon sx={{ color: colors.azure }} /> : <CloseIcon />,
@@ -40,90 +44,90 @@ export const MOCK_DATA = [
     id: 1,
     name: 'John',
     surname: 'Doe',
-    dateOfBirth: '1990-05-01',
+    dateOfBirth: new Date('1990-05-01'),
     city: 'New York',
     street: 'Main Street',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 2,
     name: 'Jane',
     surname: 'Doe',
-    dateOfBirth: '1995-02-14',
+    dateOfBirth: new Date('1995-02-14'),
     city: 'Los Angeles',
     street: 'Broadway',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 3,
     name: 'Bob',
     surname: 'Smith',
-    dateOfBirth: '1984-11-23',
+    dateOfBirth: new Date('1984-11-23'),
     city: 'Chicago',
     street: 'Michigan Avenue',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 4,
     name: 'Emily',
     surname: 'Jones',
-    dateOfBirth: '2007-09-03',
+    dateOfBirth: new Date('2007-09-03'),
     city: 'Houston',
     street: 'Fannin Street',
-    isAdult: false,
+    isActive: false,
   },
   {
     id: 5,
     name: 'David',
     surname: 'Lee',
-    dateOfBirth: '1993-07-08',
+    dateOfBirth: new Date('1993-07-08'),
     city: 'San Francisco',
     street: 'Market Street',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 6,
     name: 'Anna',
     surname: 'Taylor',
-    dateOfBirth: '1998-01-19',
+    dateOfBirth: new Date('1998-01-19'),
     city: 'Miami',
     street: 'Collins Avenue',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 7,
     name: 'Tom',
     surname: 'Wilson',
-    dateOfBirth: '1989-12-07',
+    dateOfBirth: new Date('1989-12-07'),
     city: 'Seattle',
     street: 'Pike Street',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 8,
     name: 'Linda',
     surname: 'Davis',
-    dateOfBirth: '1977-04-26',
+    dateOfBirth: new Date('1977-04-26'),
     city: 'Boston',
     street: 'Beacon Street',
-    isAdult: true,
+    isActive: true,
   },
   {
     id: 9,
     name: 'Mark',
     surname: 'Brown',
-    dateOfBirth: '2005-08-12',
+    dateOfBirth: new Date('2005-08-12'),
     city: 'Philadelphia',
     street: 'Market Street',
-    isAdult: false,
+    isActive: false,
   },
   {
     id: 10,
     name: 'Sarah',
     surname: 'Williams',
-    dateOfBirth: '1996-03-30',
+    dateOfBirth: new Date('1996-03-30'),
     city: 'Washington D.C.',
     street: 'Pennsylvania Avenue',
-    isAdult: true,
+    isActive: true,
   },
 ];
